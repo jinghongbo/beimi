@@ -2,11 +2,10 @@ version: '3'
 
 services:
   mysql:
-    #build:
-      #context: .
-      #dockerfile: docker/mysql/Dockerfile
-    #image: jinghongbo/beimi:mysql
-    image: mysql:5.7
+    build:
+      context: .
+      dockerfile: docker/mysql/Dockerfile
+    image: jinghongbo/beimi:mysql
     ports:
       - 3306:3306
     environment:
@@ -14,7 +13,7 @@ services:
       MYSQL_DATABASE: beimi
     volumes:
       - ./docker/mysql/conf:/etc/mysql/conf.d
-    #  - ./docker/mysql/data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
   serve:
     build:
@@ -24,7 +23,7 @@ services:
 
     ports:
       # 后台管理地址的端口号
-      - 8080:8080
+      - 9080:80
       # socket端口号
       - 9081:9081
   client:
@@ -36,3 +35,5 @@ services:
     ports:
       # 游戏界面的访问端口号
       - 8081:80
+volumes:
+  mysql_data:
