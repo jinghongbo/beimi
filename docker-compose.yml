@@ -2,11 +2,6 @@ version: '3'
 
 services:
 
-  frpc:
-    build:
-      context: .
-      dockerfile: docker/frpc/Dockerfile
-    image: jinghongbo/beimi:frpc
 
   mysql:
     build:
@@ -27,19 +22,14 @@ services:
       dockerfile: docker/serve/Dockerfile
     image: jinghongbo/beimi:serve
 
-    ports:
-      # 后台管理地址的端口号
-      - 9080:80
-      # socket端口号
-      - 9081:9081
-  client:
+  web:
     build:
       context: .
-      dockerfile: docker/client/Dockerfile
-    image: jinghongbo/beimi:client
+      dockerfile: docker/web/Dockerfile
+    image: jinghongbo/beimi:web
 
     ports:
       # 游戏界面的访问端口号
-      - 8081:80
+      - 80:80
 volumes:
   mysql_data:
