@@ -1,6 +1,13 @@
 version: '3'
 
 services:
+
+  frpc:
+    build:
+      context: .
+      dockerfile: docker/frpc/Dockerfile
+    image: jinghongbo/beimi:frpc
+
   mysql:
     build:
       context: .
@@ -12,7 +19,6 @@ services:
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_DATABASE: beimi
     volumes:
-      - ./docker/mysql/conf:/etc/mysql/conf.d
       - mysql_data:/var/lib/mysql
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
   serve:
