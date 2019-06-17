@@ -1,5 +1,5 @@
 FROM maven:3.3-jdk-8 as build
-COPY /docker/server/conf/settings.xml /usr/share/maven/conf/
+COPY /docker/serve/conf/settings.xml /usr/share/maven/conf/
 WORKDIR /src
 COPY pom.xml /src
 COPY /src /src/src
