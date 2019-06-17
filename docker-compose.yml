@@ -18,7 +18,7 @@ services:
   serve:
     build:
       context: .
-      dockerfile: docker/server/Dockerfile
+      dockerfile: docker/serve/Dockerfile
     image: jinghongbo/beimi:serve
 
     ports:
