@@ -10,6 +10,6 @@ RUN mvn package -Dmaven.test.skip=true
 
 FROM openjdk:8-jre as final
 WORKDIR /app
-COPY --from=build /src/target /app
+COPY --from=build /src/target/beimi-0.8.0.war /app/
 #ENTRYPOINT java -Xms1240m -Xmx1240m -Xmn450m -XX:PermSize=512M -XX:MaxPermSize=512m -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+UseTLAB -XX:NewSize=128m -XX:MaxTenuringThreshold=0 -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=60 -XX:+PrintGCDetails -Xloggc:gc.log -jar beimi-0.8.0.war
 ENTRYPOINT java -jar beimi-0.8.0.war
