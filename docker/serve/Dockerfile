@@ -7,7 +7,7 @@ RUN mvn install:install-file -Dfile=src/main/resources/WEB-INF/lib/jave-1.0.2.ja
 RUN mvn install:install-file -Dfile=src/main/resources/WEB-INF/lib/ip2region-1.2.4.jar -DgroupId=org.lionsoul.ip2region -DartifactId=ip2region -Dversion=1.2.4 -Dpackaging=jar
 RUN mvn clean package
 
-FROM openjdk:8-jre as final
+FROM java as final
 WORKDIR /app
 COPY --from=build /src/target/beimi-0.8.0.war /app/
 #ENTRYPOINT java -Xms1240m -Xmx1240m -Xmn450m -XX:PermSize=512M -XX:MaxPermSize=512m -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+UseTLAB -XX:NewSize=128m -XX:MaxTenuringThreshold=0 -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=60 -XX:+PrintGCDetails -Xloggc:gc.log -jar beimi-0.8.0.war
