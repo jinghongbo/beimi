@@ -1,8 +1,6 @@
 version: '3'
 
 services:
-
-
   mysql:
     build:
       context: .
@@ -21,12 +19,17 @@ services:
       context: .
       dockerfile: docker/serve/Dockerfile
     image: jinghongbo/beimi:serve
-
-  web:
+  client:
     build:
       context: .
-      dockerfile: docker/web/Dockerfile
-    image: jinghongbo/beimi:web
+      dockerfile: docker/client/Dockerfile
+    image: jinghongbo/beimi:client
+
+  proxy:
+    build:
+      context: .
+      dockerfile: docker/proxy/Dockerfile
+    image: jinghongbo/beimi:proxy
 
     ports:
       # 游戏界面的访问端口号
