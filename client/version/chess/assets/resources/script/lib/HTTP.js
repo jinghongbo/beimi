@@ -15,8 +15,8 @@ var HTTP = cc.Class({
         // ...
     },
     statics: {
-        baseURL:"http://beimi-serve.honbo.me:8000",
-        wsURL : "ws://beimi-server-ws.honbo.me:8000",
+        baseURL:"http://beimi-serve.honbo.me:8880/",
+        wsURL : "ws://beimi-serve-ws.honbo.me:8880/",
         authorization: null,
         httpGet: function (url , success , error , object) {
             var xhr = cc.loader.getXMLHttpRequest();
