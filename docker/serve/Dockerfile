@@ -5,8 +5,7 @@ COPY pom.xml /src
 COPY /src /src/src
 RUN mvn install:install-file -Dfile=src/main/resources/WEB-INF/lib/jave-1.0.2.jar -DgroupId=lt.jave -DartifactId=jave -Dversion=1.0.2 -Dpackaging=jar
 RUN mvn install:install-file -Dfile=src/main/resources/WEB-INF/lib/ip2region-1.2.4.jar -DgroupId=org.lionsoul.ip2region -DartifactId=ip2region -Dversion=1.2.4 -Dpackaging=jar
-RUN mvn compile
-RUN mvn package -Dmaven.test.skip=true
+RUN mvn clean package
 
 FROM openjdk:8-jre as final
 WORKDIR /app
